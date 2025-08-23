@@ -1,0 +1,22 @@
+
+## cleanup of excess TLS related code
+# Disable unused cryptographic algorithms - keeps oly the ones used for my sha256WithRSAEncryption and TLSv1.2
+CONFIG_MBEDTLS_ECP_C=n
+CONFIG_MBEDTLS_ECDSA_C=n
+CONFIG_MBEDTLS_SHA512_C=n
+CONFIG_MBEDTLS_SHA384_C=n
+CONFIG_MBEDTLS_AES256_C=n
+
+# Disable PEM and X.509 writing (only parsing needed)
+CONFIG_MBEDTLS_PEM_PARSE_C=n
+CONFIG_MBEDTLS_PEM_WRITE_C=n
+CONFIG_MBEDTLS_X509_CREATE_C=n
+CONFIG_MBEDTLS_X509_WRITE_C=n
+
+# Disable debugging and test features
+CONFIG_MBEDTLS_DEBUG=n
+CONFIG_MBEDTLS_TEST_NULL_ENTROPY=n
+
+# Disable session resumption and client-side TLS (if ESP32 is only a client)
+CONFIG_MBEDTLS_SSL_SESSION_TICKETS=n
+CONFIG_MBEDTLS_SSL_CLI_C=n
