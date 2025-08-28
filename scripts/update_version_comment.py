@@ -22,21 +22,33 @@ def update_version_comment():
             return "0000000000000000000000000000000000000000"
 
     def build_version_data(git_desc, full_hash):
-        parts = git_desc.split("-")
+        # Example: v1.0.0.0-SNTP-core-0-g5d100c9-dirty
+        match = re.match(r"^(v[\d\.]+)-(.*)-(\d+)-(g[0-9a-f]+)(-dirty)?$", git_desc)
+        if not match:
+            return {
+                "version_string": "v0.0.0-0",
+                "tagged_as": "untagged",
+                "short_hash": "g0000000",
+                "full_hash": full_hash,
+                "build_id": "P00000000-000000-0000000"
+            }
 
-        version_tag = parts[0] if len(parts) > 0 else "v0.0.0"
-        tagged_as = parts[1] if len(parts) > 1 else "untagged"
-        commit_count = parts[2] if len(parts) > 2 else "0"
-        short_hash = parts[3] if len(parts) > 3 else "g0000000"
-        dirty_flag = "dirty" if "dirty" in git_desc else ""
+        version_prefix = match.group(1)     # v1.0.0.0
+        tag_name = match.group(2)           # SNTP-core
+        commit_count = match.group(3)       # 0
+        short_hash = match.group(4)         # g5d100c9
+        dirty_flag = match.group(5)         # -dirty or None
 
-        version_string = f"{version_tag}-{commit_count}-{dirty_flag}".strip("-")
+        version_string = f"{version_prefix}-{commit_count}"
+        if dirty_flag:
+            version_string += "-dirty"
+
         timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-        build_id = f"P{timestamp}-{short_hash[1:]}"  # remove 'g' prefix
+        build_id = f"P{timestamp}-{short_hash[1:]}"  # remove 'g'
 
         return {
             "version_string": version_string,
-            "tagged_as": tagged_as,
+            "tagged_as": tag_name,
             "short_hash": short_hash,
             "full_hash": full_hash,
             "build_id": build_id

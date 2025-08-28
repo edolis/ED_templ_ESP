@@ -13,3 +13,4 @@ build
 #ignores sensitive data accidentally dropped around
 secrets.h
 ca.crt
+scripts/__pycache__

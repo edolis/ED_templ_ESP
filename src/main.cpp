@@ -6,11 +6,13 @@
  *
  * @author Emanuele Dolis (edoliscom@gmail.com)
  * @version GIT_VERSION: {version_string}
- * @tagged as : {tagged_as}
+ * @tagged as: {tagged_as}
  * @commit hash: {short_hash} [{full_hash}]
  * @build ID: {build_id}
- *
- * @date 2025-08-25
+ * @compilesize begin
+  <script filled content>
+ * @compilesize end
+ * @date 2025-08-28
  */
 
 static const char *TAG = "ESP_main_loop";
@@ -28,6 +30,7 @@ struct GIT_fwInfo {
 } // namespace ED_SYSINFO
 // #endregion
 // #endregion
+
 
 
 
