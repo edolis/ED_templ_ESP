@@ -1,5 +1,9 @@
 {
-   "search.exclude": {
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true
+  },
+  "search.exclude": { //otherwise contents is parsed and intellisense warnings and errors generated
     "**/*.cpp.bak": true,
     "**/*.bak": true
   },

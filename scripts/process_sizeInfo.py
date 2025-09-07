@@ -129,7 +129,7 @@ def _inject_into_cpp(env, table_lines):
     proj_dir = env.subst("$PROJECT_DIR")
     src_dir  = os.path.join(proj_dir, "src")
     pattern  = re.compile(
-        r"\*\s*@compilesize\s+begin.*?@compilesize\s+end\s*\n\s*\*",
+        r"\*\s*@compiledSizeInfo\s+begin.*?@compiledSizeInfo\s+end\s*\n\s*\*",
         re.DOTALL
     )
 
@@ -143,10 +143,10 @@ def _inject_into_cpp(env, table_lines):
                     continue
 
                 # build replacement block
-                block = ["*  @compilesize begin\n"]
+                block = ["*  @compiledSizeInfo begin\n"]
                 for ln in table_lines:
                     block.append("    " + ln)  # 4-space indent
-                block.append("\n    @compilesize end")
+                block.append("\n    @compiledSizeInfo end")
                 block.append(" *")  # final line
 
                 new_block = "\n".join(block)
