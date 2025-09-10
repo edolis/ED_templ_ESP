@@ -1,0 +1,15 @@
+# Enable OTA support
+
+CONFIG_APP_ROLLBACK_ENABLE=y
+CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y
+CONFIG_OTA_LOCK_FLASH_ENABLE=y
+
+#uncomment the line below if you want to have the transition from PENDING to VALID CONFIG_SOC_ADC_ATTEN_NUM
+# performed manually instead of the automathic confirmation of ESP32
+#  CONFIG_BOOTLOADER_WDT_TIME_MS=-1
+
+
+# Enable LZ4 compression
+
+CONFIG_COMPRESS_BINARY_ENABLE=y
+CONFIG_COMPRESS_BINARY_ALGORITHM=LZ4
