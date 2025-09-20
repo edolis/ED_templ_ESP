@@ -1,1 +1,22 @@
 # placeholder for sdk base defaults
+
+# enables MQTT protocol 5 to have the MQTT 5 property visible in events
+
+CONFIG_MQTT_PROTOCOL_5=y
+
+#(start here; 2048 if you’re very tight)
+CONFIG_MBEDTLS_SSL_MAX_CONTENT_LEN=4096
+CONFIG_MBEDTLS_SSL_IN_CONTENT_LEN=4096
+CONFIG_MBEDTLS_SSL_OUT_CONTENT_LEN=4096
+CONFIG_MQTT_OUTBOX_SIZE=4096
+CONFIG_MBEDTLS_DYNAMIC_BUFFER=y
+CONFIG_MBEDTLS_SSL_VARIABLE_BUFFER_LENGTH=y
+
+# long story short: platformio does not implement the MBEDTLS bundle transormation to x509_crt_bundle.S
+# so we have made it outside and we are statically linking instead
+
+#CONFIG_MBEDTLS_CERTIFICATE_BUNDLE=y
+#CONFIG_MBEDTLS_CUSTOM_CERTIFICATE_BUNDLE=y
+
+# CONFIG_MBEDTLS_CERTIFICATE_BUNDLE_DEFAULT_FULL=y
+# CONFIG_MBEDTLS_CUSTOM_CERTIFICATE_BUNDLE_PATH="D:/AMyStuff/Software/VSrepos/sharedIncludes/merged_roots.pem"

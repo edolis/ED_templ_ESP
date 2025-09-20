@@ -65,7 +65,7 @@ def merge_sdkconfig_fragments(env_override=None):
         "BT_ENABLED": os.path.join(SDKCONFIG_DIR, "sdkconfig.BT.defaults"),
         "FLASH4MB": os.path.join(SDKCONFIG_DIR, "sdkconfig.FLASH4MB.defaults"),
         "OPTIM_TSL": os.path.join(SDKCONFIG_DIR, "sdkconfig.OPTIM_TSL.defaults"),
-        "DEBUG_MODE": os.path.join(SDKCONFIG_DIR, "sdkconfig.DEBUG_MODE.defaults"),
+        "DEBUG_BUILD": os.path.join(SDKCONFIG_DIR, "sdkconfig.DEBUG_MODE.defaults"),
         "OTA_ENABLED": os.path.join(SDKCONFIG_DIR, "sdkconfig.OTA_ENABLED.defaults"),
     }
 
